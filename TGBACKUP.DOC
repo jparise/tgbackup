@@ -1,0 +1,192 @@
+    Telegard Backup
+    Release 1.5  (September 21, 1997)
+    Copyright (c) 1996-97 by Jon Parise
+    North Star Technologies
+
+
+ÚÄ--Introduction
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    So what did you just download?  In short, you now have in your possession
+the most complete (in my feeble mind) backup utility designed specifically for
+(Fan fare, please!) Telegard.  That's right, no longer will you experience
+that nauseous feeling of anxiety you get in the pit of your stomach when you
+go to mod your board, nor will you be up the creek if your drive goes south on
+you (which is my own personal reason for writing this).  Now you can rest easy
+knowing that the long hours you've spent customizing and configuring your BBS
+are insured against most (un)natural disasters.
+
+
+ÚÄ--Disclaimer
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    While this program is intended to aid you and make your life easier, I
+cannot be responsible should something unexpected happen.  Hey, that's what
+backups are for!  Remember, should something brake, you own all the pieces.
+
+
+ÚÄ--Installation
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    1.      Unzip this archive wherever you want.  Telegard Backup does not
+        require its own directory, but I like to keep everything neat and
+        tidy by doing so.
+
+   2.       Run the internal configuration program.  See 'Configuration'
+        below for detailed information.
+
+                TGBackup.Exe -C
+
+   3.       Set it up in your nightly batch file or as a Telegard event.  See
+        the Telegard Documentation for how to set that up.
+
+            Simple execute it as: TGBackup.Exe
+                  - No switches or parameters -
+
+
+ÚÄ--Configuration
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    Renegade Backup has an internal configuration program, so there's no need
+for you to edit a text file.  To enter it, type TGBackup -C from the command-
+line.  Below is a detailed explanation of each command.
+
+    Telegard Path
+        The directory to your Config.Tg file.  Telegard Backup reads this
+        file to determine your system's directories.  The file is opened in
+        Read-Only mode, so no harm will come to it.
+
+    Backup Path
+        This is the directory where the backups will be created.  If this
+        directory does not exist at runtime then it will be created.  All
+        work and storage is done in the directory, so don't point this
+        option to a Ram drive or a floppy that lacks adequate disk space.
+
+    Archiver Path
+        This is the path to where you store your archivers.  This way, you
+        can specify the direct path to your archivers without them residing
+        in your Path statement.
+
+    Archiver
+        This is the current archiver used to compress and archive the files
+        being backed up.  Currently, the only supported archivers are PkZip,
+        Arj, Lha, and Rar.  If you would like to request a additional
+        archiver, please contact me and I'll add it in.
+
+    Dated Backups
+        Telegard Backup has a feature called Dated Backups.  By default, the
+        backup file created is TGBackup.[Arc].  If Dated Backups are Enabled,
+        then the filenames will be dated in the format TGB-mmdd.[Arc], where
+        `mm` is the current month and `dd` the current day.  For example,
+        a dated backup made on December 23 would be labeled as TGB-0210.[Arc].
+        This allows you to keep a series of backups, instead of overwriting
+        the previous one.
+
+    Days to Keep
+        Telegard Backup includes a maintenance option that will purge backups
+        older than the number of days specified here.  Telegard Backup will
+        use the file's creation date to determine if it is older than this
+        number of days.  Maintenance can be forced with TGBackup.Exe -M.  The
+        maximum number of days to purge back is 30.  Set this option to zero
+        to disable maintenance.
+
+    Screen Fades
+        I coded in some text-mode screen fades just to make things look nicer.
+        If you experience problems or just don't like them, you can turn them
+        off here.
+
+    Backup Main  -through-  Backup Msgs
+        This allows you to be selective about which directories you want
+        backed up.
+
+    Mask
+        These filemasks correlate to their repective directories listed to
+        their left.  This option allows you to be even more selective with
+        your backups by allowing you to only backup a specific filemask
+        (ie. *.*, *.exe, *.ans) in each directory.
+
+    Extra Paths
+        I also added two extra paths options for you to fill in.  These
+        directories, if they exist at runtime, will be backed up and stored
+        as Extra1.[Arc] and Extra2.[Arc] in the final backup archive.
+
+    When you're finished, press Escape and save the configuration.  The
+configuration file must remain in the same directory as TGBackup.Exe.
+
+
+ÚÄ--Commandline Parameters
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    -A <archiver>
+
+        This options allows you to specify the archiver to use for compressing
+        the backup.  Current valid types are ZIP, ARJ, LHA, and RAR.
+
+    -B <filename>
+
+        This option allows you to specify the filename (minus the extention)
+        of the final backup archive to create.  There is an eight character
+        limit.
+
+    -C
+
+        Loads the internal configuration utility.
+
+    -M
+
+        Forces TGBackup into Maintenance Mode.  No backups are backups are
+        created.
+
+
+ÚÄ--Notes
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    ù If Telegard Backup finds an existing backup archive of the same name as
+      the one it's about to create, the older archive will be deleted to make
+      room for the new.
+
+    ù Telegard Backup appends a little tag to the day's Sysop.Log.  This will
+      verify that the backup was made.  It includes both time and date of the
+      backup.
+
+    ù Arj and Lha use direct screen writes to display their progress on the
+      screen.  Because of this, their output bleeds over the graphic border
+      and scrolls the Progress window upward.  I have not yet found a fix for
+      this.  The mechanics of the backup work perfectly, just the screen gets
+      messed up.  It's just something you'll have to live with for now.
+      Rar takes over the whole screen and gives you more to look at that I
+      could ever supply.  Again, this won't interfere with the intended
+      operation of the program, so please don't be concerned.
+
+    ù Use OS/2!  Just common sense, but you already knew that.
+
+
+ÚÄ--Closing
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ--ú ú   ú
+
+    I'm just a lowly Pascal programmer trying to do some good in the world.
+Therefore, Telegard Backup is released as Freeware.  I will still support it,
+and can be reached at:
+
+            Email: jon@interpow.net
+            Ftp:   ftp://connco.com/knights/
+
+            Infinite Twilight
+            Telegard/2 Beta/Support Site
+            (908) 637-8243
+            USRobotics Sportster 33.6 v34+
+            FidoNet: 1:2606/421
+            STN:     111:4908/0
+            F'Req:   TGBackup
+
+
+    This program was written using Borland International's Turbo Pascal 7.0.
+
+    Good luck, and drop me a line if you like my work.  I would enjoy hearing
+thoughts and comments.  Take care.
+
+                                                        Jon Parise
+                                                  North Star Technologies
+
+  All archivers mentioned above and in Telegard Backup are the copyrighted
+                     material of their respective owners.
